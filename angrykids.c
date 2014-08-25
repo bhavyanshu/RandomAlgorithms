@@ -2,6 +2,8 @@
 #include<math.h>
 #include<stdlib.h>
 
+#define BUFELEM 40
+
 int compare(const void *a,const void *b){
 	const int *da = (const int *)a;
 	const int *db = (const int *)b;
@@ -22,26 +24,36 @@ long long int find_max(int *ar,long long int init_elem,long long int size){
 }
 
 int main(){
-	long long int i,j,k,n,z;
-	long long int unfairness=9999999,new_unfairness;
+	long long int i,j,k,n,z,c;
+	long long int unfairness=999999999999,new_unfairness;
 	long long int min,max;
-	
+
 	scanf("%lld",&n); //Input value of total packets
 
 	scanf("%lld",&k); //Input no. of children
 
-	int arr[n]; 
+	int arr[n];
 	//Input how much candy each packet contains
 	//for(i=0;i<n;i++)
-		//scanf("%lld",&arr[i]);	
-	FILE *file;	
-	char *buffer; 
-	int BUF_SIZ = 30; // size of a line in your file, 10 digits enough for your ints?  
-	int q; 
-	file=fopen("array.txt","r");
-	for(q=0;fgets(buffer,sizeof(buffer),file)!=NULL;q++)
-	{ 
-	fscanf(file,"%d",&arr[q]);
+		//scanf("%lld",&arr[i]);
+	int q=0;
+	static const char filename[] = "angrykidstestcase.txt";
+	FILE *file = fopen(filename, "r");
+	if ( file != NULL )
+	{
+	int buffer;
+		//while (fgets(line, sizeof (line), file)!=NULL) /* read a line */
+		//{
+		while(fscanf(file,"%d",&buffer)!=EOF) {
+		arr[q]=buffer;
+		q++;
+		}
+	}
+	else 
+		printf("Error opening file!\n");
+
+	for(c=0;c<n;c++) {
+		printf("%d \n",arr[c]);
 	}
 
 	qsort(arr,n, sizeof(int),compare); //Sort in ascending order
