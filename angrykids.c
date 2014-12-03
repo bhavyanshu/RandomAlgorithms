@@ -43,7 +43,7 @@ int main(){
 
 	qsort(arr,n, sizeof(int),compare); //Sort in ascending order
 
-	for(i=0;i<=n-k;i++){
+	for(i=0;i<n-k;i++){
 		z=k+i-1;
 		if(z>(n-1)){ break;}
 		min=arr[i];
