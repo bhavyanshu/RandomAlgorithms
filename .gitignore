@@ -21,4 +21,9 @@
 *.x86_64
 *.hex
 
+# For Java
+*.class
+*.dex
+
+# Folders
 bin/
